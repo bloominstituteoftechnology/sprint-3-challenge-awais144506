@@ -225,13 +225,16 @@
         this.ants.forEach(ant => {
           ant.health -= 20;
         });
+        if (this.ants.length ) {
+          strings = `${this.ants.length} ants starting work!`;
+        } 
+        else
+        {
+          strings = `No ants here. Did you work them to death?`;
+        }
         this.ants = this.ants.filter(ant => ant.health > 0);
 
-        if (this.ants.length === 0) {
-          strings = `No ants here. Did you work them to death?`;
-        } else {
-          strings = `${this.ants.length} ants starting work!`;
-        }
+        
 
         return strings;
       }
@@ -482,7 +485,7 @@
             const farm = new AntFarm('Jess', 'Blake', 'Jess')
             farm.ants[0].health++
             actual = []
-            farm.work(); farm.work(); farm.work();  
+            farm.work(); farm.work(); farm.work();  farm.work();
             actual.push(farm.work()); actual.push(farm.work()); actual.push(farm.work())
           } catch (err) { actual = err.message }
           return [description, expected, actual]
