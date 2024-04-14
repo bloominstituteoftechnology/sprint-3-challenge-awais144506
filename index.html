@@ -169,10 +169,9 @@
       }
       next() {
         let splitText = this.text.split("");
-        let chunk = splitText.slice(this.currentIndex, this.currentIndex + this.chars).join(""); 
+        let chunk = splitText.slice(this.currentIndex, this.currentIndex + this.chars).join("");
         this.currentIndex += this.chars;
-        if(chunk.length===0)
-        {
+        if (chunk.length === 0) {
           return null
         }
         return chunk;
@@ -212,11 +211,32 @@
       // 👉 HINT: if you are not feeling confident with map and filter, solve the problem with for loops,
       //      and with the piece of mind of all tests passing, refactor to use map/filter
 
-      constructor(...args) {
+      constructor(...name) {
+        this.health = 100
+        this.ants = name.map(name => ({ name, health: this.health }));
+      }
+      ants() {
+
+        return this.ants;
 
       }
       work() {
-
+        this.ants.forEach(ant => {
+            ant.health -= 20;
+        });
+        this.ants = this.ants.filter(ant => ant.health > 0);
+        if (this.ants.length === 0) {
+            return [];
+        }
+        if(this.ants.length>0)
+        {
+          return`${this.ants.length} ants starting work!`
+        } 
+        else
+        {
+          return "No ants here. Did you work them to death?"
+        }
+        return this.ants;
       }
       feed() {
 
