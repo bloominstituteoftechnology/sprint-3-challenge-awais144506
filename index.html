@@ -69,33 +69,26 @@
       getNegatives() {
         return this.ints.filter(item => item < 0);
       }
-      getAllSquared()
-      {
-        return this.ints.map(item => item **2);
+      getAllSquared() {
+        return this.ints.map(item => item ** 2);
       }
-      pop()
-      {
+      pop() {
         return this.ints.pop()
       }
-      push(num)
-      {
-      this.ints.push(num)
-      return this.ints
+      push(num) {
+        this.ints.push(num)
+        return this.ints
       }
-      getEveryNth(n)
-      {
+      getEveryNth(n) {
         let result = []
-        for(let i = 0;i < this.ints.length;i+=n)
-        {
+        for (let i = 0; i < this.ints.length; i += n) {
           result.push(this.ints[i])
         }
         return result
       }
-      getAllReversed()
-      {
+      getAllReversed() {
         let result = []
-        for (let i =this.ints.length-1 ; i>=0 ;i--)
-        {
+        for (let i = this.ints.length - 1; i >= 0; i--) {
           result.push(this.ints[i])
         }
         return result
@@ -118,8 +111,38 @@
       //      * When engaging the safety, return "Safety enabled!"
       //      * When disengaging the safety, return "Safety disabled!"
       // 🌟 HINT: instances need to keep track of their maximum capacity as well as their current capacity
+      constructor(projectiles) {
+        this.capacity = projectiles
+        this.ammo = projectiles
+        this.safety = true
+      }
+      shoot() {
+        if (this.ammo > 0 && !this.safety) {
+          this.ammo--;
+          return "Bang!";
+        } else {
+          return "Click!";
+        }
+      }
+      toggleSafety() {
+        this.safety = !this.safety; // It is used to switch states
+        return `${this.safety ? "Safety enabled!" : "Safety disabled!"}`
+      }
+
+      reload(amount) {
+        if (typeof amount === 'number' && amount > 0) {
+            this.ammo += amount;
+            if (this.ammo > this.capacity) {
+                this.ammo = this.capacity;
+            }
+            return `${this.ammo} projectiles left!`;
+        } else {
+            return "Error reloading!";
+        }
+    }
 
     }
+
 
     // 👉 CHALLENGE 3 EBook
     class EBook {
@@ -137,7 +160,13 @@
       //    ebook.next() // returns null
       // 🌟 HINT: remember about the `slice` method which strings and arrays have
       // ❗ Feel free to implement `back`, although this is not required nor graded
+      constructor(textContent, getChars) {
 
+      }
+
+      next() {
+
+      }
     }
 
     // 👉 CHALLENGE 4 AntFarm
@@ -173,6 +202,15 @@
       // 👉 HINT: if you are not feeling confident with map and filter, solve the problem with for loops,
       //      and with the piece of mind of all tests passing, refactor to use map/filter
 
+      constructor(...args) {
+
+      }
+      work() {
+
+      }
+      feed() {
+
+      }
     }
 
     // 🧪 TESTS, do not make any changes below this line ===================
