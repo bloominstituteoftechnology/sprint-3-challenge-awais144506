@@ -482,7 +482,7 @@
             const farm = new AntFarm('Jess', 'Blake', 'Jess')
             farm.ants[0].health++
             actual = []
-            farm.work(); farm.work(); farm.work(); 
+            farm.work(); farm.work(); farm.work();  
             actual.push(farm.work()); actual.push(farm.work()); actual.push(farm.work())
           } catch (err) { actual = err.message }
           return [description, expected, actual]
