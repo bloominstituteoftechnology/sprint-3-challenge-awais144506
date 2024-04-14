@@ -130,16 +130,18 @@
       }
 
       reload(amount) {
-        if (typeof amount === 'number' && amount > 0) {
-            this.ammo += amount;
-            if (this.ammo > this.capacity) {
-                this.ammo = this.capacity;
-            }
-            return `${this.ammo} projectiles left!`;
+        if (typeof amount === 'number' && amount > 0) //Check Number Yes/No
+        {
+          this.ammo += amount; //Amount Gun Ammo m Dal di 
+          if (this.ammo > this.capacity) //Agr Max sy b ziada ammo dal di hn 
+          {
+            this.ammo = this.capacity; //Tu capacity k Equal Kar di 
+          }
+          return `${this.ammo} projectiles left!`;
         } else {
-            return "Error reloading!";
+          return "Error reloading!"; //Agr Number nahi hn tu Error Loading
         }
-    }
+      }
 
     }
 
@@ -161,11 +163,19 @@
       // 🌟 HINT: remember about the `slice` method which strings and arrays have
       // ❗ Feel free to implement `back`, although this is not required nor graded
       constructor(textContent, getChars) {
-
+        this.text = textContent;
+        this.chars = getChars;
+        this.currentIndex = 0; // Pehla Index lena tha 
       }
-
       next() {
-
+        let splitText = this.text.split("");
+        let chunk = splitText.slice(this.currentIndex, this.currentIndex + this.chars).join(""); 
+        this.currentIndex += this.chars;
+        if(chunk.length===0)
+        {
+          return null
+        }
+        return chunk;
       }
     }
 
